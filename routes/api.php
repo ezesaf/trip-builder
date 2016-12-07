@@ -15,6 +15,8 @@ Route::get('airports', 'AirportController@index');
 
 Route::get('airports/paginated', 'AirportController@indexPaginated');
 
+Route::get('trips', 'TripController@index');
+
 Route::get('trips/{tripId}/available-flights', 'TripController@availableFlights');
 
 Route::get('trips/{tripId}/flights', 'TripController@flights');

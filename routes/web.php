@@ -11,10 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-//    return view('welcome');
-    dd(request()->input('test'));
-//    dd(decrypt('eyJpdiI6ImtWZmswYlRMZ2lKd3lqYURSR2xTNHc9PSIsInZhbHVlIjoiVEhtdWpwZEdGXC9wSUNtb1NEZW9aQnc9PSIsIm1hYyI6IjNlNGM3MTAzN2U0ZmYyZDEyZjhlYWRiN2FhNDNmNjNiZDg3NzVkMjljNmJmNDkzZjI3NTM0NmM1ODlkM2UyMDAifQ=='));
-//    dd(app()->make(\App\APIs\Flights::class)->getFlightByNumber('AF400'));
+Route::get('/', function() {
+    return view('home');
+});
 
+Route::get('/trips/{tripId}', function ($tripId) {
+    return view('trip')
+        ->with(['tripId' => $tripId]);
 });
