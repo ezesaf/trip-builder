@@ -19,13 +19,24 @@ class EloquentAirportRepository implements AirportRepository
     }
 
     /**
-     * returns a list of airports ordered alphabetically
-     *
+     * Returns a list of airports ordered alphabetically
      * @param array $columns
      * @return array
      */
     public function getAllAirportsAlphabetically($columns = ['*'])
     {
         return $this->model->orderBy('name', 'ASC')->get($columns)->toArray();
+    }
+
+
+    /**
+     * Returns a paginated result of airports ordered alphabetically
+     * @param int $perPage
+     * @param array $columns
+     * @return array
+     */
+    public function getPaginatedAirportsAlphabetically($perPage = 30, $columns = ['*'])
+    {
+        return $this->model->orderBy('name', 'ASC')->paginate($perPage, $columns);
     }
 }
