@@ -17,6 +17,10 @@ class TripsTableSeeder extends Seeder
         [
             'airport_departure_id' => 192,
             'airport_destination_id' => 3881,
+        ],
+        [
+            'airport_departure_id' => 145,
+            'airport_destination_id' => 1363,
         ]
     ];
 
