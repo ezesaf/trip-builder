@@ -7,7 +7,7 @@ use App\Contracts\Repositories\AirportRepository;
 class AirportService
 {
     /**
-     * the airport repository instance
+     * The AirportRepository instance
      *
      * @var AirportRepository
      */
@@ -24,12 +24,23 @@ class AirportService
     }
 
     /**
-     * returns an alphabetically sorted list of all airports
+     * Returns an alphabetically sorted list of all airports
      * @param array $columns
      * @return array
      */
     public function getAlphabeticalListing($columns = ['*'])
     {
         return $this->airportRepository->getAllAirportsAlphabetically($columns);
+    }
+
+    /**
+     * Returns a paginated result of all airports
+     * @param int $perPage
+     * @param array $columns
+     * @return array
+     */
+    public function getPaginatedListing($perPage = 30, $columns = ['*'])
+    {
+        return $this->airportRepository->getPaginatedAirportsAlphabetically($perPage, $columns);
     }
 }
