@@ -20,6 +20,8 @@ class CreateFlightsTable extends Migration
             $table->char('airline_code', 3);
             $table->integer('airport_departure_id')->unsigned();
             $table->integer('airport_destination_id')->unsigned();
+
+            $table->unique(['trip_id', 'flight_number']);
         });
     }
 
