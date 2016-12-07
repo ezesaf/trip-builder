@@ -38,7 +38,7 @@ class FlightController extends Controller
     {
         try {
             $data = $tripService->addFlightToTrip($tripId, $request->input('flight_number'));
-            return response()->json($data, 200);
+            return response()->json($data, 200, [], JSON_PRETTY_PRINT);
         } catch (Exception $e) {
             return response()->json([
                 'success' => false,
@@ -90,6 +90,6 @@ class FlightController extends Controller
         return response()->json([
             'success' => $data,
             'code' => 200,
-        ], 200);
+        ], 200, [], JSON_PRETTY_PRINT);
     }
 }

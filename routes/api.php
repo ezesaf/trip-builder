@@ -11,12 +11,16 @@
 |
 */
 
-Route::get('/airports', 'AirportController@index');
+Route::get('airports', 'AirportController@index');
 
-Route::get('/trips/{tripId}/available-flights', 'TripController@availableFlights');
+Route::get('airports/paginated', 'AirportController@indexPaginated');
 
-Route::post('/trips/{tripId}/flights', 'FlightController@store');
+Route::get('trips/{tripId}/available-flights', 'TripController@availableFlights');
 
-Route::delete('/flights/{flightId}', 'FlightController@delete');
+Route::get('trips/{tripId}/flights', 'TripController@flights');
+
+Route::post('trips/{tripId}/flights', 'FlightController@store');
+
+Route::delete('flights/{flightId}', 'FlightController@delete');
 
 

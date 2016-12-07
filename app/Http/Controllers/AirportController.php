@@ -38,6 +38,24 @@ class AirportController extends Controller
             ], 204);
         }
 
-        return response()->json($data, 200);
+        return response()->json($data, 200, [], JSON_PRETTY_PRINT);
+    }
+
+    /**
+     * Returns a paginated list of airports.
+     *
+     * @return array
+     */
+    public function indexPaginated()
+    {
+        $data = $this->airportService->getPaginatedListing();
+
+        if (empty($data)) {
+            return response()->json([
+                'error' => 'No airport data available'
+            ], 204);
+        }
+
+        return response()->json($data, 200, [], JSON_PRETTY_PRINT);
     }
 }

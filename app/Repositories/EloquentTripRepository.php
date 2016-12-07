@@ -57,9 +57,21 @@ class EloquentTripRepository implements TripRepository
     public function addFlightToTrip($tripId, $flightData)
     {
         $trip = $this->model->findOrFail($tripId);
-
         $flight = $trip->flights()->create($flightData);
 
         return $flight->toArray();
+    }
+
+    /**
+     * Returns the list of associated flights for a given trip.
+     *
+     * @param $tripId
+     * @return array
+     */
+    public function getFlights($tripId)
+    {
+        $trip = $this->model->findOrFail($tripId);
+
+        return $trip->flights->toArray();
     }
 }

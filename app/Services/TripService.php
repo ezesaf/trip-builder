@@ -68,6 +68,22 @@ class TripService
     }
 
     /**
+     * Fetches a list of associated flights for a given trip.
+     *
+     * @param $tripId
+     * @return array
+     */
+    public function getFlights($tripId)
+    {
+        if (empty($tripId)) {
+            throw new Exception('Trip id is empty');
+        }
+        
+        return $this->tripRepository->getFlights($tripId);
+    }
+    
+
+    /**
      * Encrypts the flight numbers.
      *
      * @param $flights

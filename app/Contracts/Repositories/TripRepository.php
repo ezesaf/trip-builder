@@ -25,4 +25,12 @@ interface TripRepository
      * @param $flightData
      */
     public function addFlightToTrip($tripId, $flightData);
+
+    /**
+     * Returns the list of associated flights for a given trip.
+     * 
+     * @param $tripId
+     * @return array
+     */
+    public function getFlights($tripId);
 }
