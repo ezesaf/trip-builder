@@ -82,7 +82,6 @@ class TripService
         return $this->tripRepository->getFlights($tripId);
     }
     
-
     /**
      * Encrypts the flight numbers.
      *
