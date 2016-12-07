@@ -13,4 +13,10 @@
 
 Route::get('/airports', 'AirportController@index');
 
+Route::get('/trips/{tripId}/available-flights', 'TripController@availableFlights');
+
+Route::post('/trips/{tripId}/flights', 'FlightController@store');
+
+Route::delete('/flights/{flightId}', 'FlightController@delete');
+
 
