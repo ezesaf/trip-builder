@@ -8,12 +8,14 @@ class AirportController extends Controller
 {
     /**
      * The AiportService instance
+     *
      * @var AirportService
      */
     protected $airportService;
 
     /**
      * AirportController constructor.
+     *
      * @param AirportService $airportService
      */
     public function __construct(AirportService $airportService)
@@ -22,7 +24,8 @@ class AirportController extends Controller
     }
 
     /**
-     * Returns a list of alphabetically ordered airports
+     * Returns a list of alphabetically ordered airports.
+     *
      * @return array
      */
     public function index()

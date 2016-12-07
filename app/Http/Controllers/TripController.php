@@ -9,13 +9,15 @@ use NotFoundHttpException;
 class TripController extends Controller
 {
     /**
-     * the TripService instance
+     * the TripService instance.
+     *
      * @var TripService
      */
     protected $tripService;
 
     /**
      * TripController constructor.
+     *
      * @param TripService $tripService
      */
     public function __construct(TripService $tripService)
@@ -24,9 +26,9 @@ class TripController extends Controller
     }
 
     /**
-     * returns a list of available flights for a trip
+     * Returns a list of available flights for a trip.
+     *
      * @param $tripId
-     * @param Flights $flights
      * @return \Illuminate\Http\JsonResponse
      */
     public function availableFlights($tripId)
@@ -41,9 +43,9 @@ class TripController extends Controller
     }
 
     /**
-     * returns a list of available flights for a trip
+     * Returns a list of available flights for a trip
+     * 
      * @param $tripId
-     * @param Flights $flights
      * @return \Illuminate\Http\JsonResponse
      */
     protected function getAvailableFlights($tripId)

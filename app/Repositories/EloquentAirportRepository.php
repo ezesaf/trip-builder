@@ -7,10 +7,16 @@ use App\Contracts\Repositories\AirportRepository;
 
 class EloquentAirportRepository implements AirportRepository
 {
+    /**
+     * The Airport model.
+     * 
+     * @var Airport
+     */
     protected $model;
 
     /**
      * EloquentAirportRepository constructor.
+     * 
      * @param Airport $model
      */
     public function __construct(Airport $model)
@@ -19,7 +25,8 @@ class EloquentAirportRepository implements AirportRepository
     }
 
     /**
-     * Returns a list of airports ordered alphabetically
+     * Returns a list of airports ordered alphabetically.
+     * 
      * @param array $columns
      * @return array
      */
@@ -30,13 +37,14 @@ class EloquentAirportRepository implements AirportRepository
 
 
     /**
-     * Returns a paginated result of airports ordered alphabetically
+     * Returns a paginated result of airports ordered alphabetically.
+     * 
      * @param int $perPage
      * @param array $columns
      * @return array
      */
     public function getPaginatedAirportsAlphabetically($perPage = 30, $columns = ['*'])
     {
-        return $this->model->orderBy('name', 'ASC')->paginate($perPage, $columns);
+        return $this->model->orderBy('name', 'ASC')->paginate($perPage, $columns)->toArray();
     }
 }

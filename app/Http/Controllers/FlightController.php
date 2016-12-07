@@ -9,10 +9,16 @@ use Illuminate\Http\Request;
 
 class FlightController extends Controller
 {
+    /**
+     * The FlightService instance.
+     *
+     * @var FlightService
+     */
     protected $flightService;
 
     /**
      * FlightController constructor.
+     *
      * @param FlightService $flightService
      */
     public function __construct(FlightService $flightService)
@@ -21,6 +27,8 @@ class FlightController extends Controller
     }
 
     /**
+     * Adds a flight to a trip.
+     *
      * @param $tripId
      * @param Request $request
      * @param TripService $tripService
@@ -29,7 +37,7 @@ class FlightController extends Controller
     public function store($tripId, Request $request, TripService $tripService)
     {
         try {
-            $data = $tripService->addFlightToTrip($tripId, $request);
+            $data = $tripService->addFlightToTrip($tripId, $request->input('flight_number'));
             return response()->json($data, 200);
         } catch (Exception $e) {
             return response()->json([
@@ -42,9 +50,10 @@ class FlightController extends Controller
     }
 
     /**
+     * Deletes a flight from a trip.
+     *
      * @param $flightId
      * @return \Illuminate\Http\JsonResponse
-     * @throws \App\Services\Exception
      */
     public function delete($flightId)
     {
@@ -60,9 +69,11 @@ class FlightController extends Controller
     }
 
     /**
+     * Deletes a flight from a trip.
+     * 
      * @param $flightId
      * @return \Illuminate\Http\JsonResponse
-     * @throws \App\Services\Exception
+     * @throws Exception
      */
     protected function removeFlight($flightId)
     {

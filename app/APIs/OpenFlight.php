@@ -8,13 +8,14 @@ use Exception;
 class OpenFlight implements AirportDataProvider
 {
     /**
-     * The connection resource
+     * The connection resource.
+     * 
      * @var resource
      */
     protected $connection;
 
     /**
-     * returns a list of airports with their corresponding
+     * Returns a list of airports with their corresponding
      * name, city, country, IATA, FAA and/or ICAO code.
      *
      * @return array
@@ -31,8 +32,10 @@ class OpenFlight implements AirportDataProvider
     }
 
     /**
-     * establishes a connection with an OpenFlight endpoint
+     * Establishes a connection with an OpenFlight endpoint.
+     * 
      * @param $url
+     * @return void
      * @throws Exception
      */
     protected function connect($url)
@@ -45,7 +48,9 @@ class OpenFlight implements AirportDataProvider
     }
 
     /**
-     * closes the connection with OpenFlight
+     * Closes the connection with the endpoint.
+     * 
+     * @return void
      */
     protected function closeConnection()
     {
@@ -55,8 +60,9 @@ class OpenFlight implements AirportDataProvider
     }
 
     /**
-     * parses the stream of airport data as a csv
-     * and returns only the required information for each airport
+     * Parses the stream of airport data as a csv
+     * and returns only the required information for each airport.
+     * 
      * @return array
      */
     protected function parseAirportData()
@@ -77,9 +83,9 @@ class OpenFlight implements AirportDataProvider
     }
 
     /**
-     * returns OpentFlight endpoint for aiport data
+     * returns OpentFlight endpoint for airport data.
      * 
-     * @return mixed
+     * @return string
      */
     protected function getAirportDataURL()
     {

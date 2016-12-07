@@ -4,18 +4,29 @@ namespace App\Services;
 
 use App\APIs\Flights;
 use App\Contracts\Repositories\TripRepository;
-use Illuminate\Http\Request;
 use Mockery\CountValidator\Exception;
 
 class TripService
 {
+    /**
+     * The TripRepository instance.
+     *
+     * @var TripRepository
+     */
     protected $tripRepository;
 
+    /**
+     * The Flights api instance.
+     *
+     * @var Flights
+     */
     protected $flightsApi;
 
     /**
      * TripService constructor.
+     *
      * @param TripRepository $tripRepository
+     * @param Flights $flightsApi
      */
     public function __construct(TripRepository $tripRepository, Flights $flightsApi)
     {
@@ -24,7 +35,8 @@ class TripService
     }
 
     /**
-     * Finds available flights for a given trip
+     * Finds available flights for a given trip.
+     *
      * @param $tripId
      * @return array
      */
@@ -38,22 +50,26 @@ class TripService
     }
 
     /**
-     * Adds a flight to a trip
+     * Adds a flight to a trip.
+     *
      * @param $tripId
-     * @param Request $request
+     * @param $flightNumber
      * @return array
      */
-    public function addFlightToTrip($tripId, Request $request)
+    public function addFlightToTrip($tripId, $flightNumber)
     {
-        $this->verifyBeforeAddingFlightToTrip($tripId, $request);
+        if (empty($tripId) || empty($flightNumber)) {
+            throw new Exception('Trip id and/or flight number are not set');
+        }
 
-        $flightData = $this->getFlightData($request->input('flight_number'));
+        $flightData = $this->getFlightData($flightNumber);
         
         return $this->tripRepository->addFlightToTrip($tripId, $flightData);
     }
-    
+
     /**
-     * Encrypts the flight numbers
+     * Encrypts the flight numbers.
+     *
      * @param $flights
      * @return array
      */
@@ -66,23 +82,8 @@ class TripService
     }
 
     /**
-     * Verifies that the trip and flight number are part of the request
-     * @param $tripId
-     * @param Request $request
-     */
-    protected function verifyBeforeAddingFlightToTrip($tripId, Request $request)
-    {
-        if (!isset($tripId) || !$request->has('flight_number')) {
-            throw new Exception('Trip id and/or flight number are not set');
-        }
-
-        if (!$this->tripRepository->has($tripId)) {
-            throw new Exception('Trip does not exist');
-        }
-    }
-
-    /**
-     * Decrypts the flight number and gets the associated flight data
+     * Decrypts the flight number and gets the associated flight data.
+     *
      * @param $flightNumber
      * @return array
      */

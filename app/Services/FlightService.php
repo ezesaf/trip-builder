@@ -9,17 +9,21 @@
 namespace App\Services;
 
 use App\Contracts\Repositories\FlightRepository;
+use Exception;
 
 class FlightService
 {
     /**
-     * The flightRepository instance
+     * The flightRepository instance.
+     *
      * @var FlightRepository
      */
     protected $flightRepository;
 
     /**
      * FlightService constructor.
+     *
+     * @param FlightRepository $flightRepository
      */
     public function __construct(FlightRepository $flightRepository)
     {
@@ -27,14 +31,15 @@ class FlightService
     }
 
     /**
-     * Removes a given flight form a trip
+     * Removes a given flight form a trip.
+     * 
      * @param $flightId
      * @return bool
      * @throws Exception
      */
     public function removeFlightFromTrip($flightId)
     {
-        if (!isset($flightId)) {
+        if (empty($flightId)) {
             throw new Exception('Flight id is not set');
         }
 

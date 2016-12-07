@@ -2,54 +2,58 @@
 
 namespace App\APIs;
 
-
 use App\Contracts\Providers\FlightDataProvider;
 use Mockery\CountValidator\Exception;
 
 class Flights implements FlightDataProvider
 {
-   protected static $flights = [
-       [
-           'flight_number' => 'AC324',
-           'airline_code' => 'AC',
-           'airport_departure_id' => '145',
-           'airport_destination_id' => '192'
-       ],
-       [
-           'flight_number' => 'AC900',
-           'airline_code' => 'AC',
-           'airport_departure_id' => '145',
-           'airport_destination_id' => '192'
-       ],
-       [
-           'flight_number' => 'AC350',
-           'airline_code' => 'AC',
-           'airport_departure_id' => '192',
-           'airport_destination_id' => '3881'
-       ],
-       [
-           'flight_number' => 'AC200',
-           'airline_code' => 'AC',
-           'airport_departure_id' => '192',
-           'airport_destination_id' => '2581'
-       ],
-       [
-           'flight_number' => 'AF400',
-           'airline_code' => 'AF',
-           'airport_departure_id' => '145',
-           'airport_destination_id' => '1363'
-       ],
-       [
-           'flight_number' => 'AC150',
-           'airline_code' => 'AC',
-           'airport_departure_id' => '192',
-           'airport_destination_id' => '145'
-       ],
-   ];
+    /**
+     * The list of available flights.
+     * 
+     * @var array
+     */
+    protected static $flights = [
+        [
+            'flight_number' => 'AC324',
+            'airline_code' => 'AC',
+            'airport_departure_id' => '145',
+            'airport_destination_id' => '192'
+        ],
+        [
+            'flight_number' => 'AC900',
+            'airline_code' => 'AC',
+            'airport_departure_id' => '145',
+            'airport_destination_id' => '192'
+        ],
+        [
+            'flight_number' => 'AC350',
+            'airline_code' => 'AC',
+            'airport_departure_id' => '192',
+            'airport_destination_id' => '3881'
+        ],
+        [
+            'flight_number' => 'AC200',
+            'airline_code' => 'AC',
+            'airport_departure_id' => '192',
+            'airport_destination_id' => '2581'
+        ],
+        [
+            'flight_number' => 'AF400',
+            'airline_code' => 'AF',
+            'airport_departure_id' => '145',
+            'airport_destination_id' => '1363'
+        ],
+        [
+            'flight_number' => 'AC150',
+            'airline_code' => 'AC',
+            'airport_departure_id' => '192',
+            'airport_destination_id' => '145'
+        ],
+    ];
 
     /**
-     * returns a list of available flights between 2 airports
-     *
+     * Returns a list of available flights between 2.
+     * 
      * @param $origin
      * @param $destination
      * @return array
@@ -67,7 +71,8 @@ class Flights implements FlightDataProvider
     }
 
     /**
-     * finds a flight by its number
+     * Finds a flight by its number.
+     *
      * @param $flightNumber
      * @return array
      */

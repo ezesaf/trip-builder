@@ -7,7 +7,7 @@ use App\Contracts\Repositories\AirportRepository;
 class AirportService
 {
     /**
-     * The AirportRepository instance
+     * The AirportRepository instance.
      *
      * @var AirportRepository
      */
@@ -24,7 +24,8 @@ class AirportService
     }
 
     /**
-     * Returns an alphabetically sorted list of all airports
+     * Returns an alphabetically sorted list of all airports.
+     * 
      * @param array $columns
      * @return array
      */
@@ -34,7 +35,8 @@ class AirportService
     }
 
     /**
-     * Returns a paginated result of all airports
+     * Returns a paginated result of all airports.
+     * 
      * @param int $perPage
      * @param array $columns
      * @return array

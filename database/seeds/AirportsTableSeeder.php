@@ -5,11 +5,21 @@ use Illuminate\Database\Seeder;
 
 class AirportsTableSeeder extends Seeder
 {
-    protected $airportDataService;
+    /**
+     * The AirportDataProvider instance.
+     *
+     * @var AirportDataProvider
+     */
+    protected $airportDataProvider;
 
-    public function __construct(AirportDataProvider $airportDataService)
+    /**
+     * AirportsTableSeeder constructor.
+     *
+     * @param AirportDataProvider $airportDataService
+     */
+    public function __construct(AirportDataProvider $airportDataProvider)
     {
-        $this->airportDataService = $airportDataService;
+        $this->airportDataProvider = $airportDataProvider;
     }
 
     /**
@@ -19,7 +29,7 @@ class AirportsTableSeeder extends Seeder
      */
     public function run()
     {
-        $data = $this->airportDataService->getAirportData();
+        $data = $this->airportDataProvider->getAirportData();
 
         DB::table('airports')->insert($data);
     }

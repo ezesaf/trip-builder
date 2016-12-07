@@ -8,13 +8,15 @@ use App\Trip;
 class EloquentTripRepository implements TripRepository
 {
     /**
-     * The Eloquent model instance
+     * The Trip model.
+     *
      * @var Trip
      */
     protected $model;
 
     /**
      * EloquentTripRepository constructor.
+     *
      * @param Trip $model
      */
     public function __construct(Trip $model)
@@ -23,7 +25,7 @@ class EloquentTripRepository implements TripRepository
     }
 
     /**
-     * Finds a trip by id
+     * Finds a trip by its id.
      *
      * @param $id
      * @return array
@@ -35,7 +37,8 @@ class EloquentTripRepository implements TripRepository
 
     /**
      * Returns whether or not the repository
-     * has a trip with the specified id
+     * has a trip with the specified id.
+     *
      * @param $id
      * @return boolean
      */
@@ -45,7 +48,8 @@ class EloquentTripRepository implements TripRepository
     }
 
     /**
-     * Adds a flight to the given trip
+     * Adds a flight to the given trip.
+     * 
      * @param $tripId
      * @param $flightData
      * @return array

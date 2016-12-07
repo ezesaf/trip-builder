@@ -7,10 +7,16 @@ use App\Flight;
 
 class EloquentFlightRepository implements FlightRepository
 {
+    /**
+     * The Flight model.
+     * 
+     * @var Flight
+     */
     protected $model;
 
     /**
      * EloquentFlightRepository constructor.
+     * 
      * @param Flight $model
      */
     public function __construct(Flight $model)
@@ -19,14 +25,15 @@ class EloquentFlightRepository implements FlightRepository
     }
 
     /**
-     * Removes a given flight from a trip
+     * Removes a given flight from a trip.
+     * 
      * @param $flightId
      * @return boolean
      */
     public function removeFlight($flightId)
     {
         $count = $this->model->destroy($flightId);
-        
+
         return $count > 0;
     }
 }
