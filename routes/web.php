@@ -11,11 +11,6 @@
 |
 */
 
-Route::get('/', function() {
-    return view('home');
-});
+Route::get('/', 'WebController@index');
 
-Route::get('/trips/{tripId}', function ($tripId) {
-    return view('trip')
-        ->with(['tripId' => $tripId]);
-});
+Route::get('/trips/{tripId}', 'WebController@trip');
