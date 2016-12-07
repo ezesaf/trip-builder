@@ -43,8 +43,8 @@ class FlightController extends Controller
             return response()->json([
                 'success' => false,
                 'error' => $e->getMessage(),
-                'code' => 400
-            ], 400);
+                'code' => 403
+            ], 403);
         }
 
     }
