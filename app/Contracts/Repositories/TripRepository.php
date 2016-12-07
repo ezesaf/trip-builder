@@ -33,4 +33,11 @@ interface TripRepository
      * @return array
      */
     public function getFlights($tripId);
+
+    /**
+     * Returns a list of all existing trips
+     *
+     * @return array
+     */
+    public function getAll();
 }

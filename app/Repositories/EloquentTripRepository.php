@@ -74,4 +74,14 @@ class EloquentTripRepository implements TripRepository
 
         return $trip->flights->toArray();
     }
+
+    /**
+     * Returns a list of all existing trips
+     *
+     * @return array
+     */
+    public function getAll()
+    {
+        return $this->model->all()->toArray();
+    }
 }

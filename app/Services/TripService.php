@@ -81,4 +81,14 @@ class TripService
         
         return $this->tripRepository->getFlights($tripId);
     }
+
+    /**
+     * Fetches a list of all existing trips.
+     *
+     * @return array
+     */
+    public function getTrips()
+    {
+        return $this->tripRepository->getAll();
+    }
 }
