@@ -42,7 +42,7 @@ class TripServiceTest extends TestCase
     public function test_adding_flight_to_a_trip()
     {
         $tripId = 1;
-        $flightNumber = encrypt('AC324');
+        $flightNumber = 'AC324';
         $flightData = $this->getMockedAvailableFlights()[0];
 
         $tripRepository = Mockery::mock('App\Contracts\Repositories\TripRepository')
@@ -53,7 +53,7 @@ class TripServiceTest extends TestCase
 
         $flightsApi = Mockery::mock('App\APIs\Flights')
             ->shouldReceive('getFlightByNumber')
-            ->with(decrypt($flightNumber))
+            ->with($flightNumber)
             ->andReturn($flightData)
             ->mock();
 

@@ -46,7 +46,7 @@ class TripService
 
         $availableFlights = $this->flightsApi->getAvailableFlights($trip['airport_departure_id'], $trip['airport_destination_id']);
 
-        return $this->encryptFlightNumbers($availableFlights);
+        return $availableFlights;
     }
 
     /**
@@ -62,7 +62,7 @@ class TripService
             throw new Exception('Trip id and/or flight number are not set');
         }
 
-        $flightData = $this->getFlightData($flightNumber);
+        $flightData = $this->flightsApi->getFlightByNumber($flightNumber);
         
         return $this->tripRepository->addFlightToTrip($tripId, $flightData);
     }
@@ -80,32 +80,5 @@ class TripService
         }
         
         return $this->tripRepository->getFlights($tripId);
-    }
-    
-    /**
-     * Encrypts the flight numbers.
-     *
-     * @param $flights
-     * @return array
-     */
-    protected function encryptFlightNumbers($flights)
-    {
-        return array_map(function($flight) {
-            $flight['flight_number'] = encrypt($flight['flight_number']);
-            return $flight;
-        }, $flights);
-    }
-
-    /**
-     * Decrypts the flight number and gets the associated flight data.
-     *
-     * @param $flightNumber
-     * @return array
-     */
-    protected function getFlightData($flightNumber)
-    {
-        $flightNumber = decrypt($flightNumber);
-
-        return $this->flightsApi->getFlightByNumber($flightNumber);
     }
 }
