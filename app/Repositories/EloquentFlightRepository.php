@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Contracts\Repositories\FlightRepository;
-use App\Flight;
+use App\Models\Flight;
 
 class EloquentFlightRepository implements FlightRepository
 {

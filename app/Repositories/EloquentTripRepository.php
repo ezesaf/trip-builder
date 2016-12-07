@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Contracts\Repositories\TripRepository;
-use App\Trip;
+use App\Models\Trip;
 
 class EloquentTripRepository implements TripRepository
 {

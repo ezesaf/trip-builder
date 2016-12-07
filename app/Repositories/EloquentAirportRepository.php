@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Airport;
+use App\Models\Airport;
 use App\Contracts\Repositories\AirportRepository;
 
 class EloquentAirportRepository implements AirportRepository
