@@ -32,6 +32,24 @@ class Flights implements FlightDataProvider
             'airport_destination_id' => '3881'
         ],
         [
+            'flight_number' => 'AC450',
+            'airline_code' => 'AC',
+            'airport_departure_id' => '192',
+            'airport_destination_id' => '3881'
+        ],
+        [
+            'flight_number' => 'AC550',
+            'airline_code' => 'AC',
+            'airport_departure_id' => '192',
+            'airport_destination_id' => '3881'
+        ],
+        [
+            'flight_number' => 'AC580',
+            'airline_code' => 'AC',
+            'airport_departure_id' => '3881',
+            'airport_destination_id' => '192'
+        ],
+        [
             'flight_number' => 'AC200',
             'airline_code' => 'AC',
             'airport_departure_id' => '192',
@@ -42,6 +60,12 @@ class Flights implements FlightDataProvider
             'airline_code' => 'AF',
             'airport_departure_id' => '145',
             'airport_destination_id' => '1363'
+        ],
+        [
+            'flight_number' => 'AF980',
+            'airline_code' => 'AF',
+            'airport_departure_id' => '1363',
+            'airport_destination_id' => '145'
         ],
         [
             'flight_number' => 'AC150',
